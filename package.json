@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "commander": "^11.0.0"
+  },
+  "name": "tsh",
+  "description": "> terminal in ssh",
+  "version": "1.0.0",
+  "main": "index.js",
+  "bin": {
+    "tsh": "index.js"
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "terminal",
+    "ssh"
+  ],
+  "author": "huaixu3",
+  "license": "MIT"
+}
