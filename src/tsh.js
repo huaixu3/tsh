@@ -3,6 +3,7 @@
 const { Command } = require("commander");
 const connectImpl=require("./lib/service/connectImpl")
 const cryptoImpl=require("./lib/service/cryptoImpl")
+const hostsImpl=require("./lib/service/hostsImpl")
 const program = new Command();
 program.version("1.0.1")
 program.addCommand(makeConnect());
@@ -43,11 +44,32 @@ function makeConnect() {
     return connect;
 }
 // 主机模块
+// ls =》 列出所有主机
+// add 新增主机
+// modify 修改主机
 function makeHost() {
     const host = new Command("host");
     host
         .action(()=>{
-            console.log("ls==",)
+            hostsImpl.hostsList();
+        });
+    host.command('ls')
+        .alias("l")
+        .description('list hosts')
+        .action(() => {
+            hostsImpl.hostsList();
+        })
+    host.command('add')
+        .alias("a")
+        .description('add host')
+        .action(() => {
+            hostsImpl.addHost();
+        })
+    host.command('modify')
+        .alias("m")
+        .description('modify hosts')
+        .action(() => {
+            hostsImpl.modifyHost();
         })
     return host;
 }

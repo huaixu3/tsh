@@ -1,5 +1,7 @@
 const path=require("path")
-const hostsDataBasePath=path.join(__dirname,"./database/hosts.json")
+const fs=require("fs")
+const hostUtils=require("../utils/hostUtils")
+const hostsDataBasePath=path.join(__dirname,"../database/hosts.json")
 const hostsData=require(hostsDataBasePath)
 const host={
     Group:"",
@@ -10,16 +12,27 @@ const host={
     User:"",
     Password:""
 }
-//data=JSON.parse(hostsDataBasePath)
-console.log(hostsDataBasePath)
-//console.log(hostsData)
-
-const hostsList = (hosts) => {
-    hosts.forEach((host)=> {
-        console.log(host.Lable)
-        console.log(host.Hostname)
-        console.log(host.User)
+const hostsList = () => {
+    hostsData.forEach((host)=> {
+        console.log("主机:%s  ip/name:%s  user:%s",host.Lable,host.Hostname,host.User)
     });
 };
-hostsList(hostsData)
-//module.exports = {connect};
+const addHost=()=>{
+    // 新增主机
+    hostUtils.addHostByVim((host)=>{
+        var tmpHostsData = hostsData;
+        tmpHostsData.push(host)
+        // 保存
+        hostUtils.saveHostToHostDatabase(tmpHostsData)
+    })
+}
+const modifyHost=()=>{
+    hostUtils.modifyHostsDataByVim(hostsData,(hostsData)=>{
+        // 保存
+        hostUtils.saveHostToHostDatabase(hostsData)
+    })
+}
+// modifyHost()
+// hostsList(hostsData)
+// addHost(host)
+module.exports = {hostsList,addHost,modifyHost};

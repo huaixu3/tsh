@@ -41,3 +41,11 @@ sudo npm install -g
 #    "tsh": "src/tsh.js"
 #  },
 ```
+
+增、删、改、查
+
+保存全部
+添加一个（vim)
+查询已有的
+
+删除
