@@ -5,9 +5,10 @@ set timeout 10
 set user [lindex $argv 0]
 set hostname [lindex $argv 1]
 set password [lindex $argv 2]
+set port [lindex $argv 3]
 
 # 检查是否需要进行指纹确认
-spawn ssh -o StrictHostKeyChecking=ask $user@$hostname
+spawn ssh -o StrictHostKeyChecking=ask $user@$hostname -p $port
 expect {
     "Are you sure you want to continue connecting" {
         send "yes\r"

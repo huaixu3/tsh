@@ -1,9 +1,9 @@
 {
-    "Group":"defaultGroup",
-    "Lable":"defaultLable",
-    "Tags":"defaultTags",
-    "Hostname":"defaultHostName",
-    "Port":"defaultPort",
-    "User":"defaultUser",
-    "Password":"defaultPassword"
+    "Group":"",
+    "Lable":"",
+    "Tags":"",
+    "Hostname":"",
+    "Port":"",
+    "User":"",
+    "Password":""
 }

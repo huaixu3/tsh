@@ -35,4 +35,4 @@ const modifyHost=()=>{
 // modifyHost()
 // hostsList(hostsData)
 // addHost(host)
-module.exports = {hostsList,addHost,modifyHost};
+module.exports = {hostsList,addHost,modifyHost,hostsData};

@@ -5,15 +5,15 @@ const { spawnSync } = require("child_process");
 //const password = "123456";
 
 const path=require("path")
-const sshLogin=path.join(__dirname,"../utils/ssh-login.exp")
+const sshLoginExp=path.join(__dirname,"../utils/ssh-login.exp")
+const hostsImpl=require("./hostsImpl")
 //console.log(sshLogin)
 // 调用expect脚本
-const connect = (username, hostname, password) => {
+const connect = (username, hostname, password,port=22) => {
     console.log("start login")
     const result = spawnSync(
-        //"./ssh-login.exp",
-        sshLogin,
-        [username, hostname, password],
+        sshLoginExp,
+        [username, hostname, password,port],
         {
             stdio: "inherit",
         }
@@ -25,4 +25,13 @@ const connect = (username, hostname, password) => {
     // expect脚本执行完成后退出程序
     process.exit(0);
 };
-module.exports = {connect};
+const connectByLable=(hostLable)=>{
+    var targetHost=hostsImpl.hostsData.filter(host => host.Lable === hostLable);
+    if (targetHost.length === 1) {
+        connect(targetHost[0].User,targetHost[0].Hostname,targetHost[0].Password,targetHost[0].Port)
+        // console.log(targetHost[0]);
+    } else {
+        console.log("输入有误")
+    }
+}
+module.exports = {connect,connectByLable};

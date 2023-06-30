@@ -4,6 +4,7 @@ const { Command } = require("commander");
 const connectImpl=require("./lib/service/connectImpl")
 const cryptoImpl=require("./lib/service/cryptoImpl")
 const hostsImpl=require("./lib/service/hostsImpl")
+const {hostsData} = require("./lib/service/hostsImpl");
 const program = new Command();
 program.version("1.0.1")
 program.addCommand(makeConnect());
@@ -32,13 +33,19 @@ function makeCrypto() {
 function makeConnect() {
     const connect = new Command("connect");
     connect
+        .argument("<host>","host")
+        .action((host)=>{
+            connectImpl.connectByLable(host)
+        })
+    connect
+        .command("c")
         .argument("<user>","user")
         .argument("<hostname>","hostname")
         .argument("<password>","password")
         .action((user,hostname,password)=>{
-            console.log("user:",user)
-            console.log("hostname:",hostname)
-            console.log("password:",password)
+            // console.log("user:",user)
+            // console.log("hostname:",hostname)
+            // console.log("password:",password)
             connectImpl.connect(user,hostname,password)
         })
     return connect;
