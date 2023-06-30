@@ -5,7 +5,7 @@ const { spawnSync } = require("child_process");
 //const password = "123456";
 
 const path=require("path")
-const sshLogin=path.join(__dirname,"ssh-login.exp")
+const sshLogin=path.join(__dirname,"../utils/ssh-login.exp")
 //console.log(sshLogin)
 // 调用expect脚本
 const connect = (username, hostname, password) => {

@@ -30,3 +30,14 @@ file:
 ```
 
 
+```bash
+sudo npm install -g 
+# 全局安装，
+# 包会在/usr/lib/node_modules/tsh/ 
+# 可执行命令会在 /usr/bin/tsh 
+
+# 添加bin选项
+#  "bin": {
+#    "tsh": "src/tsh.js"
+#  },
+```
