@@ -1,16 +1,14 @@
 const { spawnSync } = require("child_process");
-// SSH参数
-//const username = "ve";
-//const hostname = "localhost";
-//const password = "123456";
 
 const path=require("path")
 const sshLoginExp=path.join(__dirname,"../utils/ssh-login.exp")
 const hostsImpl=require("./hostsImpl")
-//console.log(sshLogin)
+const cryptoImpl=require("./cryptoImpl")
 // 调用expect脚本
 const connect = (username, hostname, password,port=22) => {
-    console.log("start login")
+    // console.log("start login")
+    // decrypt
+    password = cryptoImpl.decrypt(password);
     const result = spawnSync(
         sshLoginExp,
         [username, hostname, password,port],

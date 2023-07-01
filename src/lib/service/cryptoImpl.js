@@ -1,6 +1,9 @@
-var CryptoJS = require('crypto-js');
+const CryptoJS = require('crypto-js');
+const path =require('path')
+const configPath=path.join(__dirname,"../../config/config.json")
+const configResource=require(configPath)
 
-const encryptoKey = '--mhyt.fun------';
+const encryptoKey = configResource.encryptoKey;
 //加密
 const encrypt = (data,paramkey = encryptoKey) => {
   var key = CryptoJS.enc.Utf8.parse(paramkey);
