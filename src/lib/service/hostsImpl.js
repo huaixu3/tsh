@@ -3,19 +3,18 @@ const fs=require("fs")
 const hostUtils=require("../utils/hostUtils")
 const hostsDataBasePath=path.join(__dirname,"../database/hosts.json")
 const hostsData=require(hostsDataBasePath)
-const host={
-    Group:"",
-    Lable:"",
-    Tags:"",
-    Hostname:"",
-    Port:"",
-    User:"",
-    Password:""
-}
+var Table = require('cli-table');
+// instantiate
+var baseInfoTable = new Table({
+    head: ['Label', 'IP/hostname','User','Port']
+    , colWidths: [20, 20,10,5]
+});
+
 const hostsList = () => {
     hostsData.forEach((host)=> {
-        console.log("主机:%s  ip/name:%s  user:%s",host.Lable,host.Hostname,host.User)
+        baseInfoTable.push([host.Lable,host.Hostname,host.User,host.Port])
     });
+    console.log(baseInfoTable.toString());
 };
 const addHost=()=>{
     // 新增主机
