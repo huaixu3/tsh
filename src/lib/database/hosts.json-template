@@ -1,0 +1,20 @@
+[
+  {
+    "Group": "Group",
+    "Lable": "Lable",
+    "Tags": "Tags",
+    "Hostname": "127.0.0.1",
+    "Port": "22",
+    "User": "ve",
+    "Password": "mhyt"
+  },
+  {
+    "Group": "Group",
+    "Lable": "Lable",
+    "Tags": "work",
+    "Hostname": "192.168.0.1",
+    "Port": "22",
+    "User": "root",
+    "Password": "root123"
+  }
+]
