@@ -1,5 +1,4 @@
 /node_modules/
 .idea/
-src/config
 src/lib/database/hosts.json
 
