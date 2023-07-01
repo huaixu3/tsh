@@ -21,12 +21,20 @@ const addHost=()=>{
     // 新增主机
     hostUtils.addHostByVim((host)=>{
         var tmpHostsData = hostsData;
-        // 加密
-        host.Password=cryptoImpl.encrypt(host.Password)
+        host=addHostFilter(host)
         tmpHostsData.push(host)
         // 保存
         hostUtils.saveHostToHostDatabase(tmpHostsData)
     })
+}
+const addHostFilter=(host)=>{
+    // 加密
+    host.Password=cryptoImpl.encrypt(host.Password)
+    // 默认端口
+    if (host.Port === "") {
+        host.Port = "22";
+    }
+    return host;
 }
 const modifyHost=()=>{
     hostUtils.modifyHostsDataByVim(hostsData,(hostsData)=>{
